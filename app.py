@@ -6,6 +6,10 @@ import time
 from flask import Flask, jsonify, render_template_string
 START_TIME = time.time()
 
+# Issue 1
+from datetime import datetime
+START_TIMESTAMP = datetime.now().isoformat()
+
 app = Flask(__name__)
 
 
@@ -44,7 +48,9 @@ def report():
 	return jsonify({
 		'hostname': socket.gethostname(),
 		'python_version': platform.python_version(),
-		'uptime_seconds': round(time.time() - START_TIME, 2)
+		'uptime_seconds': round(time.time() - START_TIME, 2),
+		# Issue 1
+		'startup_time': START_TIMESTAMP
 	})
 
 
